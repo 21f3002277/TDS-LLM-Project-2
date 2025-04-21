@@ -40,3 +40,11 @@ curl -X POST "https://your-app.vercel.app/api/" \
   -H "Content-Type: multipart/form-data" \
   -F "question=Download and unzip file abcd.zip which has a single extract.csv file inside. What is the value in the \"answer\" column of the CSV file?" \
   -F "file=@abcd.zip"
+
+### 🔁 Response Format
+
+```json
+{
+  "answer": "1234567890"
+}
+```
