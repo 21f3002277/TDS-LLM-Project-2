@@ -1,0 +1,5 @@
+.env
+llm_project_2_venv/
+.gitignore
+LICENSE
+README.md
