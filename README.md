@@ -10,7 +10,7 @@
 - **Roll Number** - 21f3002277
 
 ## Project Title : 📘 TDS Solver – IITM Data Science Assignment Assistant
-This project is part of the **Tools in Data Science** course in the **IIT Madras B.S. in Data Science** program. The goal is to build an LLM-powered API that can automatically solve questions from any of the 5 graded assignments.
+This project is part of the **Tools in Data Science** course in the **IIT Madras B.S. in Data Science and Applications** program. The goal is to build an LLM-powered API that can automatically solve questions from any of the 5 graded assignments.
 
 ## 🚀 Project Overview
 
