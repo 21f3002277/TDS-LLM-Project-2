@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IITM TDS Assistant</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #10a37f;
+            --bg-light: #ffffff;
+            --bg-dark: #121212;
+            --text-light: #333333;
+            --text-dark: #e0e0e0;
+            --border-light: #e5e5e5;
+            --border-dark: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 260px;
+            background-color: var(--bg-light);
+            border-right: 1px solid var(--border-light);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+
+        body.dark-mode .sidebar {
+            background-color: var(--bg-dark);
+            border-color: var(--border-dark);
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .sidebar-header .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0.75rem;
+        }
+
+        .nav-item {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-mode .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .branding {
+            margin-bottom: 2rem;
+        }
+
+        .brand-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .input-container {
+            max-width: 800px;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .input-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        body.dark-mode .input-card {
+            background-color: var(--bg-dark);
+            border-color: var(--border-dark);
+        }
+
+        .input-field {
+            flex: 1;
+            border: none;
+            background: transparent;
+            color: inherit;
+            font-size: 1rem;
+            padding: 0.5rem;
+        }
+
+        .input-field:focus {
+            outline: none;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .icon-button:hover {
+            background-color: rgba(16, 163, 127, 0.1);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+        }
+
+        /* Accessibility Improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                height: 100%;
+                z-index: 100;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .input-card {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="dark-toggle">
+        <button class="icon-button" id="darkModeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fab fa-react"></i>
+                <span>TDS Assistant</span>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-rocket"></i>
+                        <span>Explore Modules</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-book-open"></i>
+                        <span>Assignment Library</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="branding">
+            <img src="/static/logo/iit-madras-logo.png" alt="IIT Madras Logo" class="brand-logo">
+            <h1>IITM TDS Assignment Assistant</h1>
+            <p class="subtitle">By Vikash Prasad</p>
+        </div>
+
+        <div class="meta-info">
+            <p>TA For IIT Madras Tools in Data Science Course</p>
+            <p>Assisting Students in Graded Assignments (Week 1–5)</p>
+        </div><br><br><br><br>
+
+        <h2 class="prompt-text">How can I help with your assignment today?</h2>
+
+        <div class="input-container">
+            <div class="input-card">
+                <input type="text" class="input-field" placeholder="Enter your question from Week 1-5"
+                    aria-label="Assignment question input">
+                <button class="icon-button" aria-label="Voice input">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button class="icon-button" aria-label="New chat">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            // Save theme preference
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+            // Update icon
+            const icon = darkModeToggle.querySelector('i');
+            icon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+        });
+
+        // Mobile Menu Toggle (can be added later)
+        // Add any additional functionality here
+    </script>
+</body>
+
+</html>
