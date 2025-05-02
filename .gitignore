@@ -1,6 +1,8 @@
 llm_project_2_venv/
 .env
 
-
+__pycache__/
 index_1.html
 index_2.html
+g_1.py
+g.py

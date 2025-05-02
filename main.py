@@ -1,14 +1,33 @@
 # /// script
-# requires-python = ">=3.11"
+# requires-python = ">=3.12"
 # dependencies = [
 #   "fastapi",
 #   "uvicorn",
+#   "requests",
+#   "python-dotenv",
+#   "beautifulsoup4",
+#   "pandas",
+#   "numpy",
+#   "feedparser",
+#   "python-dotenv",
+#   "pydub",
+#   "yt-dlp",
+#   "whisper",
+#   "fastapi",
+#   "uvicorn",
+#   "httpx",
+#   "jellyfish",
+#   "pycountry",
+#   "pdfplumber",
+#   "python-multipart",
 # ]
 # ///
 
 
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 import requests
 import uvicorn
 import os
@@ -53,9 +72,14 @@ def delete_file(file_path: str):
     if os.path.exists(file_path):
         os.remove(file_path)
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+# Home route
 @app.get("/")
-async def home():
-    return {"message": "AI Assignment Assistant is running >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"}
+async def read_root():
+    """Serve the index.html file."""
+    return FileResponse("static/index.html")
 
 
 @app.post("/api/")

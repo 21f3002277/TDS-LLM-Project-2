@@ -1,3 +1,25 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#   "requests",
+#   "beautifulsoup4",
+#   "pandas",
+#   "numpy",
+#   "feedparser",
+#   "python-dotenv",
+#   "pydub",
+#   "yt-dlp",
+#   "whisper",
+#   "fastapi",
+#   "uvicorn",
+#   "httpx",
+#   "jellyfish",
+#   "pycountry",
+#   "pdfplumber",
+#   "python-multipart",
+# ]
+# ///
+
 import subprocess
 import jellyfish
 import hashlib
